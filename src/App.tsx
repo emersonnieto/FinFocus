@@ -1,18 +1,27 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from "./styles/GlobalStyles";
 
-import Dashboard from "./components/Layout";
-import dark from "./styles/themes/dark"
+import Layout from "./components/Layout";
+import Dashboard from "./pages/Dashboard"; 
 
-const App: React.FC = () => {
+import dark from "./styles/themes/dark";
+
+interface ChildrenProps {
+  children?: React.ReactNode;
+}
+
+const App: React.FC<ChildrenProps> = ({ children }) => {
     return (
         <ThemeProvider theme={dark}>
             <GlobalStyle />
-            <Dashboard />
+            <Layout>
+                <Dashboard>
+                    {children}
+                </Dashboard>
+            </Layout>
         </ThemeProvider>
     );
-
 }
 
 export default App;

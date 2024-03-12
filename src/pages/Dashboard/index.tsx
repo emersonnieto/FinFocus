@@ -1,9 +1,13 @@
 import React from "react";
 
-const Dashboard: React.FC = () => {
-    return (
-        <h1>Dashboard</h1>
-    );
+interface ChildrenProps {
+  children: React.ReactNode;
+}
+
+const Dashboard: React.FC<ChildrenProps> = ({ children }) => {
+  return (
+    <h1>Dashboard</h1>
+  );
 }
 
 export default Dashboard;
