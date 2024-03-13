@@ -1,4 +1,6 @@
 import React from "react";
+import { Container } from "./styles";
+import ContentHeader from "../../components/ContentHeader";
 
 interface ChildrenProps {
   children: React.ReactNode;
@@ -6,7 +8,9 @@ interface ChildrenProps {
 
 const Dashboard: React.FC<ChildrenProps> = ({ children }) => {
   return (
-    <h1>Dashboard</h1>
+    <Container>
+      <ContentHeader />
+    </Container>
   );
 }
 

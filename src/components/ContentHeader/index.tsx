@@ -1,11 +1,17 @@
 import React from "react";
 
-import { Container } from "./styles";
+import { Container, TitleContainer, Controllers} from "./styles";
 
 const ContentHeader: React.FC = () => {
     return (
         <Container>
-            <h1>Content Header</h1>
+            <TitleContainer>
+                <h1>Titulo</h1>
+            </TitleContainer>
+            <Controllers>
+                <button type="button">Botão A</button>
+                <button type="button">Botão B</button>
+            </Controllers>
         </Container>
     );
 }
