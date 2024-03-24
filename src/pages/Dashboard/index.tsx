@@ -3,11 +3,9 @@ import { Container } from "./styles";
 import ContentHeader from "../../components/ContentHeader";
 import SelectInput from "../../components/SelectInput";
 
-interface ChildrenProps {
-  children: ReactNode;
-}
 
-const Dashboard: React.FC<ChildrenProps> = ({ children }) => {
+
+const Dashboard: React.FC = () => {
 
   const options = [
     {value: 'Rodrigo', label: 'Rodrigo'},

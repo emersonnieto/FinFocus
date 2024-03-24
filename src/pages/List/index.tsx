@@ -1,19 +1,36 @@
-import React, { ReactNode } from "react";
+import React, { useMemo } from "react";
 import { Container, Content, Filters } from "./styles";
 import ContentHeader from "../../components/ContentHeader";
 import SelectInput from "../../components/SelectInput";
 import HistoryFinanceCard from "../../components/HistoryFinanceCard";
+import { useParams } from "react-router-dom";
 
-interface ChildrenProps {
-    children: ReactNode;
-}
 
-const List: React.FC<ChildrenProps> = ({ children }) => {
+const List: React.FC = () => {
+
+    const {type} = useParams()
+
+    const title = useMemo(() =>{
+        return type === 'entry-balance' ? 'Entradas' : 'Saídas'
+    },[type])
+
+    const linecolor = useMemo(() => {
+        return type === 'entry-balance' ? '#F7931B':'#E44C4E'
+    },[type])
 
     const months = [
         { value: 1, label: 'Janeiro' },
         { value: 2, label: 'Fevereiro' },
         { value: 3, label: 'Março' },
+        { value: 4, label: 'Abril' },
+        { value: 5, label: 'Maio' },
+        { value: 6, label: 'Junho' },
+        { value: 7, label: 'Julho' },
+        { value: 8, label: 'Agosto' },
+        { value: 9, label: 'Setembro' },
+        { value: 10, label: 'Outubro' },
+        { value: 11, label: 'Novembro' },
+        { value: 12, label: 'Dezembro' },
     ]
 
     const years = [
@@ -24,20 +41,20 @@ const List: React.FC<ChildrenProps> = ({ children }) => {
 
     return (
         <Container>
-            <ContentHeader title="Saídas" lineColor="#e44c4e">
+            <ContentHeader title={title} lineColor={linecolor}>
                 <SelectInput options={months} />
                 <SelectInput options={years} />
             </ContentHeader>
 
             <Filters>
-                <button 
+                <button
                     type="button"
                     className="tag-filter tag-filter-recurrent"
                 >
                     Recorrentes
                 </button>
 
-                <button 
+                <button
                     type="button"
                     className="tag-filter tag-filter-eventual"
                 >
