@@ -32,7 +32,13 @@ const List: React.FC = () => {
     console.log(type);
 
     const listData = useMemo(() => {
-        return type === 'entry-balance' ? gains : expenses
+        if (type === 'entry-balance') {
+            return gains;
+        } else {
+
+            return expenses;
+        }
+
     }, [type])
 
     const months = [
@@ -58,7 +64,6 @@ const List: React.FC = () => {
 
 
     useEffect(() => {
-        
         const response = listData.map(item => {
             return {
                 id: String(Math.random() * data.length),
@@ -69,8 +74,8 @@ const List: React.FC = () => {
                 tagColor: item.frequency === 'recorrente' ? '#e44c4e' : '#4e41f0',
             }
         })
+
         setData(response)
-        
     }, [data.length, listData]);
 
     return (
@@ -98,15 +103,17 @@ const List: React.FC = () => {
 
             <Content>
                 {
-                    data.map(item => (
-                        <HistoryFinanceCard
-                            key={item.id}
-                            tagColor={item.tagColor}
-                            title={item.description}
-                            subTitle={item.dateFormatted}
-                            amount={item.amountFormatted}
-                        />
-                    ))
+                    data.map((item, index) => {
+                        return (
+                            <HistoryFinanceCard
+                                key={index}
+                                tagColor={item.tagColor}
+                                title={item.description}
+                                subTitle={item.dateFormatted}
+                                amount={item.amountFormatted}
+                            />
+                        )
+                    })
                 }
             </Content>
 
