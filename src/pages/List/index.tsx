@@ -6,6 +6,9 @@ import HistoryFinanceCard from "../../components/HistoryFinanceCard";
 import { useParams } from "react-router-dom";
 import gains from "../../repositories/gains";
 import expenses from "../../repositories/expenses";
+import formatCurrency from "../../utils/formatCurrency";
+import formatDate from "../../utils/formatDate";
+import listOfmonths from "../../utils/months";
 
 interface IData {
     id: string;
@@ -29,8 +32,6 @@ const List: React.FC = () => {
         return type === 'entry-balance' ? '#F7931B' : '#E44C4E'
     }, [type])
 
-    console.log(type);
-
     const listData = useMemo(() => {
         if (type === 'entry-balance') {
             return gains;
@@ -41,36 +42,45 @@ const List: React.FC = () => {
 
     }, [type])
 
-    const months = [
-        { value: 1, label: 'Janeiro' },
-        { value: 2, label: 'Fevereiro' },
-        { value: 3, label: 'Março' },
-        { value: 4, label: 'Abril' },
-        { value: 5, label: 'Maio' },
-        { value: 6, label: 'Junho' },
-        { value: 7, label: 'Julho' },
-        { value: 8, label: 'Agosto' },
-        { value: 9, label: 'Setembro' },
-        { value: 10, label: 'Outubro' },
-        { value: 11, label: 'Novembro' },
-        { value: 12, label: 'Dezembro' },
-    ]
+    
 
-    const years = [
-        { value: 2023, label: 2023 },
-        { value: 2022, label: 2022 },
-        { value: 2021, label: 2021 },
-    ]
+    const years = useMemo(() => {
+        let uniqueYears: number[] = [];
 
+        listData.forEach(item => {
+            const date = new Date(item.date)
+            const year = date.getFullYear()
+
+            if (!uniqueYears.includes(year)) {
+                uniqueYears.push(year)
+            }
+        })
+
+        return uniqueYears.map(year => {
+            return {
+                value: year,
+                label: year
+            }
+        })
+    }, [listData])
+
+    const months = useMemo(() => {
+        return listOfmonths.map((month, index) => {
+            return{
+                value: index + 1,
+                label: month,
+            }
+        })
+    },[])
 
     useEffect(() => {
         const response = listData.map(item => {
             return {
                 id: String(Math.random() * data.length),
                 description: item.description,
-                amountFormatted: item.amount,
+                amountFormatted: formatCurrency(Number(item.amount)),
                 frenquency: item.frequency,
-                dateFormatted: item.date,
+                dateFormatted: formatDate(item.date),
                 tagColor: item.frequency === 'recorrente' ? '#e44c4e' : '#4e41f0',
             }
         })

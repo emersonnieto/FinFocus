@@ -11,6 +11,7 @@
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "@types/react-router": "^5.1.20",
+    "@types/uuid": "^9.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
@@ -20,6 +21,8 @@
     "react-switch": "^7.0.0",
     "styled-components": "^6.1.8",
     "typescript": "^4.9.5",
+    "util": "^0.12.5",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
