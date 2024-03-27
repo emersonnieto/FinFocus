@@ -21,6 +21,8 @@ interface IData {
 
 const List: React.FC = () => {
     const [data, setData] = useState<IData[]>([]);
+    const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() + 1));
+    const [yearSelected, setYearSelected] = useState<string>(String(new Date().getFullYear()));
 
     const { type } = useParams()
 
@@ -74,7 +76,14 @@ const List: React.FC = () => {
     },[])
 
     useEffect(() => {
-        const response = listData.map(item => {
+        const filteredData = listData.filter(item => {
+            const date = new Date(item.date);
+            const month = String(date.getMonth() + 1);
+            const year = String(date.getFullYear());
+            return month === monthSelected && year === yearSelected;
+        });
+
+        const formattedData = filteredData.map(item => {
             return {
                 id: String(Math.random() * data.length),
                 description: item.description,
@@ -85,14 +94,14 @@ const List: React.FC = () => {
             }
         })
 
-        setData(response)
+        setData(formattedData)
     }, [data.length, listData]);
 
     return (
         <Container>
             <ContentHeader title={title} lineColor={linecolor}>
-                <SelectInput options={months} />
-                <SelectInput options={years} />
+                <SelectInput options={months} onChange={(e) => setMonthSelected(e.target.value)} defaultValue={monthSelected} />
+                <SelectInput options={years} onChange={(e) => setYearSelected(e.target.value)}  defaultValue={yearSelected}/>
             </ContentHeader>
 
             <Filters>
