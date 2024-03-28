@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { Container, Content, Filters } from "./styles";
+
 import ContentHeader from "../../components/ContentHeader";
 import SelectInput from "../../components/SelectInput";
 import HistoryFinanceCard from "../../components/HistoryFinanceCard";
@@ -44,7 +45,7 @@ const List: React.FC = () => {
 
     }, [type])
 
-    
+
 
     const years = useMemo(() => {
         let uniqueYears: number[] = [];
@@ -55,6 +56,9 @@ const List: React.FC = () => {
 
             if (!uniqueYears.includes(year)) {
                 uniqueYears.push(year)
+                uniqueYears.sort()
+
+                setYearSelected(String(year))
             }
         })
 
@@ -68,12 +72,12 @@ const List: React.FC = () => {
 
     const months = useMemo(() => {
         return listOfmonths.map((month, index) => {
-            return{
+            return {
                 value: index + 1,
                 label: month,
             }
         })
-    },[])
+    }, [])
 
     useEffect(() => {
         const filteredData = listData.filter(item => {
@@ -85,7 +89,7 @@ const List: React.FC = () => {
 
         const formattedData = filteredData.map(item => {
             return {
-                id: String(Math.random() * data.length),
+                id: String(new Date().getTime() + item.amount),
                 description: item.description,
                 amountFormatted: formatCurrency(Number(item.amount)),
                 frenquency: item.frequency,
@@ -93,15 +97,14 @@ const List: React.FC = () => {
                 tagColor: item.frequency === 'recorrente' ? '#e44c4e' : '#4e41f0',
             }
         })
-
         setData(formattedData)
-    }, [data.length, listData]);
+    }, [listData, monthSelected, yearSelected, data.length]);
 
     return (
         <Container>
             <ContentHeader title={title} lineColor={linecolor}>
                 <SelectInput options={months} onChange={(e) => setMonthSelected(e.target.value)} defaultValue={monthSelected} />
-                <SelectInput options={years} onChange={(e) => setYearSelected(e.target.value)}  defaultValue={yearSelected}/>
+                <SelectInput options={years} onChange={(e) => setYearSelected(e.target.value)} defaultValue={yearSelected} />
             </ContentHeader>
 
             <Filters>
