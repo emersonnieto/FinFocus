@@ -1,10 +1,19 @@
 import React, { useState, useMemo } from "react";
-import { Container } from "./styles";
+
 import ContentHeader from "../../components/ContentHeader";
 import SelectInput from "../../components/SelectInput";
+import WalletBox from "../../components/WalletBox";
+
 import expenses from "../../repositories/expenses";
 import gains from "../../repositories/gains";
 import listOfmonths from "../../utils/months";
+
+
+import {
+  Container,
+  Content
+} from "./styles";
+
 
 const Dashboard: React.FC = () => {
   const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth() + 1);
@@ -21,35 +30,35 @@ const Dashboard: React.FC = () => {
     let latestYear: number | null = null;
 
     [...expenses, ...gains].forEach(item => {
-        const date = new Date(item.date);
-        const year = date.getFullYear();
+      const date = new Date(item.date);
+      const year = date.getFullYear();
 
-        if (!uniqueYears.includes(year)) {
-            uniqueYears.push(year);
-            if (latestYear === null || year > latestYear) {
-                latestYear = year;
-            }
+      if (!uniqueYears.includes(year)) {
+        uniqueYears.push(year);
+        if (latestYear === null || year > latestYear) {
+          latestYear = year;
         }
+      }
     });
 
     if (latestYear !== null) {
-        setYearSelected(latestYear);
+      setYearSelected(latestYear);
     }
 
     return uniqueYears.map(year => ({
-        value: year,
-        label: year
+      value: year,
+      label: year
     }));
-}, []);
+  }, []);
 
-const months = useMemo(() => {
+  const months = useMemo(() => {
     return listOfmonths.map((month, index) => {
-        return {
-            value: index + 1,
-            label: month,
-        }
+      return {
+        value: index + 1,
+        label: month,
+      }
     })
-}, [])
+  }, [])
 
   const handleMonthSelected = (month: string) => {
     try {
@@ -75,6 +84,33 @@ const months = useMemo(() => {
         <SelectInput options={months} onChange={(e) => handleMonthSelected(e.target.value)} defaultValue={monthSelected} />
         <SelectInput options={years} onChange={(e) => handlYearSelected(e.target.value)} defaultValue={yearSelected} />
       </ContentHeader>
+
+      <Content>
+        <WalletBox
+          title="saldo"
+          amount={150.00}
+          footerlabel="atualizado com base no saldo"
+          icon="dollar"
+          color="#4E41f0"
+        />
+
+        <WalletBox
+          title="entradas"
+          amount={5000.00}
+          footerlabel="atualizado com base nas entradas"
+          icon="arrowUp"
+          color="#F7931B"
+        />
+
+        <WalletBox
+          title="saidas"
+          amount={4850.00}
+          footerlabel="atualizado com base nas saidas"
+          icon="arrowDown"
+          color="#E44C4E"
+        />
+      </Content>
+
     </Container>
   );
 };
