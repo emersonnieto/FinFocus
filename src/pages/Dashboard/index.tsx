@@ -4,6 +4,7 @@ import ContentHeader from "../../components/ContentHeader";
 import SelectInput from "../../components/SelectInput";
 import WalletBox from "../../components/WalletBox";
 import MessageBox from "../../components/MessageBox";
+import GraficoPizza from "../../components/GraficoPizza";
 
 import expenses from "../../repositories/expenses";
 import gains from "../../repositories/gains";
@@ -18,18 +19,12 @@ import {
   Container,
   Content
 } from "./styles";
-import { title } from "process";
+
 
 
 const Dashboard: React.FC = () => {
   const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth() + 1);
   const [yearSelected, setYearSelected] = useState<number>(new Date().getFullYear());
-
-  const options = [
-    { value: 'Rodrigo', label: 'Rodrigo' },
-    { value: 'Emerson', label: 'Emerson' },
-    { value: 'Ana', label: 'Ana' },
-  ]
 
   const years = useMemo(() => {
     let uniqueYears: number[] = [];
@@ -112,7 +107,7 @@ const Dashboard: React.FC = () => {
         footerText: "Verifique seus gasto e tente corta algo se nescessario",
         icon: sadImg
       }
-    } else if ((totalGains - totalExpenses) == 0) {
+    } else if ((totalGains - totalExpenses) === 0) {
       return {
         title: "Ufaa!",
         description: "Neste mês, gastou exatamente oque ganhou.",
@@ -186,6 +181,8 @@ const Dashboard: React.FC = () => {
           footerText={message.footerText}
           icon={message.icon}
         />
+
+        <GraficoPizza />
 
       </Content>
 
