@@ -32,7 +32,7 @@ const List: React.FC = () => {
     }, [type])
 
     const linecolor = useMemo(() => {
-        return type === 'entry-balance' ? '#F7931B' : '#E44C4E'
+        return type === 'entry-balance' ? '#03b885' : '#E44C4E'
     }, [type])
 
     const listData = useMemo(() => {
