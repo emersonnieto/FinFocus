@@ -14,55 +14,45 @@ import {
     SideRigth
 } from "./styles";
 
+interface IGraficoPizzasProps {
+    data: {
+        name: string;
+        value: number;
+        percent: number;
+        color: string;
+    }[];
 
-const GraficoPizza: React.FC = () => (
+}
+
+const GraficoPizza: React.FC<IGraficoPizzasProps> = ({ data }) => (
     <Container>
         <SideLeft>
-        <h2>Relação</h2>
+            <h2>Relação</h2>
             <LegendContainer>
-                <Legend color = "#F7931B">
-                    <div>5%</div>
-                    <span>Entradas</span>
-
-                </Legend>
-
-                <Legend color = "#E44C4E">
-                    <div>95%</div>
-                    <span>Saídas</span>
-                </Legend>
-
-                <Legend color = "#E44C4E">
-                    <div>95%</div>
-                    <span>Saídas</span>
-                </Legend>
-
-                <Legend color = "#E44C4E">
-                    <div>95%</div>
-                    <span>Saídas</span>
-                </Legend>
-
-                <Legend color = "#E44C4E">
-                    <div>95%</div>
-                    <span>Saídas</span>
-                </Legend>
-
-                <Legend color = "#E44C4E">
-                    <div>95%</div>
-                    <span>Saídas</span>
-                </Legend>
+                {
+                    data.map(indicator => (
+                        <Legend key={indicator.name} color={indicator.color} >
+                            <div>{indicator.percent}</div>
+                            <span>{indicator.name}</span>
+                        </Legend>
+                    ))
+                }
             </LegendContainer>
-        </SideLeft>
-        <ResponsiveContainer>
-            <PieChart>
-                <Pie
-                    data={[]}
-                    labelLine={false}
-                    dataKey="percent"
-                />
-            </PieChart>
-        </ResponsiveContainer>
-        <SideRigth>
 
+        </SideLeft>
+
+        <SideRigth>
+                <ResponsiveContainer>
+                    <PieChart>
+                        <Pie data={data} dataKey="percent">
+                            {
+                                data.map((indicator) => (
+                                    <Cell key={indicator.name} fill={indicator.color} />
+                                ))
+                            }
+                        </Pie>
+                    </PieChart>
+                </ResponsiveContainer>
         </SideRigth>
     </Container>
 )

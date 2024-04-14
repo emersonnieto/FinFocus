@@ -125,6 +125,33 @@ const Dashboard: React.FC = () => {
 
   }, [totalGains, totalExpenses])
 
+  const relationExpensesVersusGains = useMemo(() => {
+    const total = totalGains + totalExpenses;
+
+    const gainsPercent = (totalGains / total) * 100;
+    const expensesPercent = (totalExpenses / total) * 100;
+
+    const data = [
+      {
+        name: "Entradas",
+        value: totalGains,
+        percent: Number(gainsPercent.toFixed(1)),
+        color: '#F7931B',
+      },
+
+      {
+        name: "Saidas",
+        value: totalExpenses,
+        percent: Number(expensesPercent.toFixed(1)),
+        color: '#E44C4E',
+      },
+
+    ];
+
+    return data;
+
+  }, [totalGains, totalExpenses]);
+
   const handleMonthSelected = (month: string) => {
     try {
       const parseMonth = Number(month)
@@ -182,7 +209,7 @@ const Dashboard: React.FC = () => {
           icon={message.icon}
         />
 
-        <GraficoPizza />
+        <GraficoPizza data={relationExpensesVersusGains} />
 
       </Content>
 
