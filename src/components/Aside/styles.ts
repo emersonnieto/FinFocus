@@ -9,7 +9,7 @@ export const Container = styled.div`
     border-right: 1px solid ${props => props.theme.colors.gray};
 
     a{
-        color: ${props => props.theme.colors.info};
+        color: ${props => props.theme.colors.white};
         text-decoration: none;
         margin: 7px 0;
         display: flex;

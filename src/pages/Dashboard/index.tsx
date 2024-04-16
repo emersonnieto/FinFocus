@@ -109,14 +109,24 @@ const Dashboard: React.FC = () => {
         footerText: "Verifique seus gasto e tente corta algo se nescessario",
         icon: sadImg
       }
-    } else if ((totalGains - totalExpenses) === 0) {
+    }
+    else if (totalGains === 0 && totalExpenses === 0) {
+      return {
+        title: "Op's!",
+        description: "Neste mês não há registros de entradas ou saídas.",
+        footerText: "Parece que você não fez nenhum registro no mês e ano selecionado",
+        icon: ufaaImg
+      }
+    }
+    else if ((totalGains - totalExpenses) === 0) {
       return {
         title: "Ufaa!",
         description: "Neste mês, gastou exatamente oque ganhou.",
         footerText: "Tenha cuidado. No próximo tente poupar",
         icon: ufaaImg
       }
-    } else {
+    }
+    else {
       return {
         title: "Muito bem!",
         description: "Sua Carteira esta positiva.",
@@ -130,21 +140,21 @@ const Dashboard: React.FC = () => {
   const relationExpensesVersusGains = useMemo(() => {
     const total = totalGains + totalExpenses;
 
-    const gainsPercent = (totalGains / total) * 100;
-    const expensesPercent = (totalExpenses / total) * 100;
+    const gainsPercent = Number(((totalGains / total) * 100).toFixed(1));
+    const expensesPercent = Number(((totalExpenses / total) * 100).toFixed(1));
 
     const data = [
       {
         name: "Entradas",
         value: totalGains,
-        percent: Number(gainsPercent.toFixed(1)),
+        percent: gainsPercent ? gainsPercent : 0,
         color: '#03b885',
       },
 
       {
         name: "Saidas",
         value: totalExpenses,
-        percent: Number(expensesPercent.toFixed(1)),
+        percent: expensesPercent ? expensesPercent : 0,
         color: '#E44C4E',
       },
 
@@ -225,17 +235,62 @@ const Dashboard: React.FC = () => {
 
     const total = amountRecurrent + amountEventual;
 
+    const recurrentPercent = Number(((amountRecurrent / total) * 100).toFixed(1));
+    const eventualPercent = Number(((amountEventual / total) * 100).toFixed(1));
+
     return [
       {
         name: 'Recorrentes',
         amount: amountRecurrent,
-        percent: Number(((amountRecurrent / total) * 100).toFixed(1)),
+        percent: recurrentPercent ? recurrentPercent : 0,
         color: "#F7931B"
       },
       {
         name: 'Eventuais',
         amount: amountEventual,
-        percent: Number(((amountEventual / total) * 100).toFixed(1)),
+        percent: eventualPercent ? eventualPercent : 0,
+        color: "#E44C4E"
+      }
+    ]
+  }, [yearSelected, monthSelected])
+
+  const relationGainsRecurrentVersusEventual = useMemo(() => {
+    let amountRecurrent = 0;
+    let amountEventual = 0;
+
+    gains.filter((gain) => {
+      const date = new Date(gain.date);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+
+      return month === monthSelected && year === yearSelected;
+    })
+      .forEach((gain) => {
+        if (gain.frequency === 'recorrente') {
+          return amountRecurrent += Number(gain.amount);
+        }
+
+        if (gain.frequency === 'eventual') {
+          return amountEventual += Number(gain.amount);
+        }
+      });
+
+    const total = amountRecurrent + amountEventual;
+
+    const recurrentPercent = Number(((amountRecurrent / total) * 100).toFixed(1));
+    const eventualPercent = Number(((amountEventual / total) * 100).toFixed(1));
+
+    return [
+      {
+        name: 'Recorrentes',
+        amount: amountRecurrent,
+        percent: recurrentPercent ? recurrentPercent : 0,
+        color: "#F7931B"
+      },
+      {
+        name: 'Eventuais',
+        amount: amountEventual,
+        percent: eventualPercent ? eventualPercent : 0,
         color: "#E44C4E"
       }
     ]
@@ -309,6 +364,11 @@ const Dashboard: React.FC = () => {
         <BarChartBox
           title="Saídas"
           data={relationExpensevesRecurrentVersusEventual}
+        />
+
+        <BarChartBox
+          title="Entradas"
+          data={relationGainsRecurrentVersusEventual}
         />
 
       </Content>
