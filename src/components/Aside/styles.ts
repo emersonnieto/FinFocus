@@ -50,22 +50,3 @@ export const MenuContainer = styled.nav`
     margin-top: 50px;
 `;
 
-// export const MenuItemLink = styled.a`
-//    color: ${props => props.theme.colors.info};
-//    text-decoration: none;
-//    margin: 7px 0;
-//    display: flex;
-//    align-items: center;
-//    align-content: center;
-//    transition: opacity .3s;
-
-//    &:hover{
-//        opacity: .7;
-//    }
-
-//    > svg {
-//        font-size: 18px;
-//        margin-right: 5px;
-//    }
-//`;
-

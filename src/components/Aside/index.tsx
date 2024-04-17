@@ -20,7 +20,7 @@ const Aside: React.FC = () => {
             </Header>
 
             <MenuContainer>
-                <Link to="/dashboard" >
+                <Link to="/dashboard">
                     <MdDashboard />
                         DashBoard
                 </Link>
