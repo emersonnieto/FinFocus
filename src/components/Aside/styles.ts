@@ -14,10 +14,10 @@ export const Container = styled.div`
         margin: 7px 0;
         display: flex;
         align-items: center;
-        transition: opacity .3s;
+        
 
         &:hover{
-            opacity: .7;
+            color: #2FA6FA;
         }
 
         >svg{
@@ -50,3 +50,18 @@ export const MenuContainer = styled.nav`
     margin-top: 50px;
 `;
 
+export const Dropdown = styled.div`
+    color: ${props => props.theme.colors.white};
+    text-decoration: none;
+    margin: 7px 0;
+
+    >svg{
+            font-size: 18px;
+            margin-right: 5px;
+        }
+
+`;
+
+export const DropdownContent = styled.div`
+
+`;
