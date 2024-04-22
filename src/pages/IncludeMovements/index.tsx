@@ -2,6 +2,13 @@ import React from "react";
 
 import {
   Container,
+  ContentForm,
+  ContentDescription,
+  ContentAmount,
+  ContentType,
+  ContentFrequency,
+  ContentDate,
+  ContentButton
 } from "./styles";
 
 import ContentHeader from "../../components/ContentHeader";
@@ -15,30 +22,43 @@ const IncludeMovements: React.FC = () => {
       </ContentHeader>
 
       <Content>
-        <form action="#" method="post">
-          <label htmlFor="description">Descrição:</label>
-          <input type="text" id="description" name="description" />
+        <ContentForm>
+          <form action="#" method="post">
+            <ContentDescription>
+              <label htmlFor="description">Descrição:</label>
+              <input type="text" id="description" name="description" />
+              <ContentType>
+                <label htmlFor="type">Tipo:</label>
+                <select id="type" name="type">
+                  <option value="entrada">Entrada</option>
+                  <option value="saida">Saída</option>
+                </select>
+              </ContentType>
+            </ContentDescription>
 
-          <label htmlFor="value">Valor:</label>
-          <input type="number" id="value" name="value" />
+            <ContentAmount>
+              <label htmlFor="value">Valor:</label>
+              <input type="number" id="value" name="value" />
+            </ContentAmount>
 
-          <label htmlFor="type">Tipo:</label>
-          <select id="type" name="type">
-            <option value="entrada">Entrada</option>
-            <option value="saida">Saída</option>
-          </select>
+            <ContentFrequency>
+              <label htmlFor="frequency">Frequência:</label>
+              <select id="frequency" name="frequency">
+                <option value="recorrente">Recorrente</option>
+                <option value="eventual">Eventual</option>
+              </select>
+              <ContentDate>
+                <label htmlFor="date">Data:</label>
+                <input type="date" id="date" name="date" />
+              </ContentDate>
+            </ContentFrequency>
 
-          <label htmlFor="frequency">Frequência:</label>
-          <select id="frequency" name="frequency">
-            <option value="recorrente">Recorrente</option>
-            <option value="eventual">Eventual</option>
-          </select>
+            <ContentButton>
+              <button type="submit">Adicionar Movimento</button>
+            </ContentButton>
 
-          <label htmlFor="date">Data:</label>
-          <input type="date" id="date" name="date" />
-
-          <button type="submit">Adicionar Movimento</button>
-        </form>
+          </form>
+        </ContentForm>
       </Content>
 
     </Container>
