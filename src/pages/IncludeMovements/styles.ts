@@ -4,77 +4,124 @@ export const Container = styled.div`
 
 `;
 
+
 export const ContentForm = styled.div`
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50%;
-        min-width: 100vh;
-        flex-direction: column;
-        padding: 20px 30px;
-        border: 2px solid black;
-        font-size: 24px;
-        color: black;
-        background-color: white;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  min-width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #666666;
         
 `;
 export const ContentDescription = styled.div`
-    display: flex;
-    margin-bottom: 20px;
-    
-    >input{
-        border: 1px solid gray;
-        width: 300px;
-        margin-left: 10px;
-    }
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  label {
+    margin-right: 10px;
+  }
+
+  input,
+  select {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #666666;
+  }
 
 `;
 export const ContentAmount = styled.div`
-    display: flex;
-    margin-bottom: 20px;  
-    >input{
-        border: 1px solid gray;
-        width: 300px;
-        margin-left: 10px;
-    }
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  label {
+    margin-right: 10px;
+    color: #666666;
+    
+  }
+
+  input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #666666;
+  }
 `;
 export const ContentType = styled.div`
-    display: flex;
-    margin-left: 20px;
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
 
-    >select{
-        border: 1px solid gray;
-        margin-left: 10px;
-    }
+  label {
+    margin-left: 10px;
+    color: #666666;
+  }
+
+  select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #666666;
+  }
 `;
 export const ContentFrequency = styled.div`
-    display: flex;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 
-    >select{
-        border: 1px solid gray;
-        margin-left: 10px;
-    }
+  label {
+    margin-right: 10px;
+    color: #666666;
+  }
+
+  select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #666666;
+  }
 `;
 export const ContentDate = styled.div`
-    display: flex;
-    margin-left: 50px;
-    >input{
-        border: 1px solid gray;
-        margin-left: 10px;
+  display: flex;
+  align-items: center;
+  margin-left: 83px;
 
-    }
+  label {
+    margin-left: 10px;
+    color: #666666;
+  }
+
+  input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #666666;
+  }
 `;
 export const ContentButton = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    >button{
-        background-color: #4e41f0;
-        color: white;
-        height: 50px;
-        padding: 10px;
-        border-radius: 5px;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 
+  button {
+    background-color: #4e41f0;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #3c31b9;
+    }
+  }
 `;

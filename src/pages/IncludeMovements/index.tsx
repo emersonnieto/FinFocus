@@ -27,6 +27,11 @@ const IncludeMovements: React.FC = () => {
             <ContentDescription>
               <label htmlFor="description">Descrição:</label>
               <input type="text" id="description" name="description" />
+            </ContentDescription>
+
+            <ContentAmount>
+              <label htmlFor="value">Valor:</label>
+              <input type="number" id="value" name="value" />
               <ContentType>
                 <label htmlFor="type">Tipo:</label>
                 <select id="type" name="type">
@@ -34,11 +39,6 @@ const IncludeMovements: React.FC = () => {
                   <option value="saida">Saída</option>
                 </select>
               </ContentType>
-            </ContentDescription>
-
-            <ContentAmount>
-              <label htmlFor="value">Valor:</label>
-              <input type="number" id="value" name="value" />
             </ContentAmount>
 
             <ContentFrequency>
