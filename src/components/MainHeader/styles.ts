@@ -28,7 +28,7 @@ export const Container = styled.div`
 
         >svg{
             font-size: 18px;
-            margin-left: 5px;
+            
         }
     }
 `;
