@@ -1,12 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+`;
 
+export const ContainerForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 
 export const ContentForm = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   max-width: 600px;
   min-width: 600px;

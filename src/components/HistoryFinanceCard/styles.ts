@@ -34,9 +34,7 @@ export const Container = styled.li`
     > div span {
         font-weight: 500;
         font-size: 22;
-    }
-
-    
+    } 
 `;
 
 export const Tag = styled.div<ItagProps>`

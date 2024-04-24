@@ -9,6 +9,28 @@ export const Container = styled.div`
     align-items: center;
     padding: 0 10px;
     border-bottom: 1px solid ${props => props.theme.colors.gray};
+
+    >a {
+        border-radius: 5px;
+        background-color: #03b885;
+        color: ${props => props.theme.colors.white};
+        text-decoration: none;
+        padding: 10px;
+        margin-left:  14px;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover{
+            opacity: 0.7;
+        }
+
+        >svg{
+            font-size: 18px;
+            margin-left: 5px;
+        }
+    }
 `;
 
 export const Profile = styled.div`

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import logoimg from '../../assets/logo.svg'
 import { Link } from "react-router-dom";
 
@@ -7,11 +7,7 @@ import {
     MdArrowDownward,
     MdArrowUpward,
     MdExitToApp,
-    MdDoubleArrow,
-    MdAdd,
-    MdDelete,
-    MdEdit,
-    MdArrowDropDown
+    MdAdd
 } from 'react-icons/md'
 
 import {
@@ -20,13 +16,10 @@ import {
     LogImg,
     Title,
     MenuContainer,
-    Dropdown,
-    DropdownContent
+
 } from "./styles";
 
 const Aside: React.FC = () => {
-
-    const [showDropdown, setShowDropdown] = useState(false);
 
     return (
         <Container>
@@ -40,30 +33,12 @@ const Aside: React.FC = () => {
                     <MdDashboard />
                     DashBoard
                 </Link>
+                
+                <Link to="/include">
+                    <MdAdd />
+                    Adicionar
+                </Link>
 
-                <Dropdown onClick={() => setShowDropdown(true)} onMouseLeave={() => setShowDropdown(false)}>
-                    <Link to="#">
-                        <MdDoubleArrow />
-                        Movimentações
-                        <MdArrowDropDown />
-                    </Link>
-                    {showDropdown && (
-                        <DropdownContent>
-                            <Link to="/include">
-                                <MdAdd />
-                                Adicionar
-                            </Link>
-                            <Link to="#">
-                                <MdEdit />
-                                Editar
-                            </Link>
-                            <Link to="#">
-                                <MdDelete />
-                                Excluir
-                            </Link>
-                        </DropdownContent>
-                    )}
-                </Dropdown>
 
                 <Link to="/list/entry-balance" >
                     <MdArrowUpward />
