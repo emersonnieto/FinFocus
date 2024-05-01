@@ -7,6 +7,7 @@ export const ContainerForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 100px;
 `;
 
 
@@ -43,6 +44,27 @@ export const ContentDescription = styled.div`
   }
 
 `;
+
+export const ContentTypePayment = styled.div`
+    display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  label {
+    margin-right: 10px;
+  }
+
+  input,
+  select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #666666;
+  }
+
+`;
+
+
 export const ContentAmount = styled.div`
   display: flex;
   align-items: center;

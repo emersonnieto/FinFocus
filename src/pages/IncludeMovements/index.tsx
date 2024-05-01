@@ -9,7 +9,8 @@ import {
   ContentFrequency,
   ContentDate,
   ContentButton,
-  ContainerForm
+  ContainerForm,
+  ContentTypePayment
 } from "./styles";
 
 import ContentHeader from "../../components/ContentHeader";
@@ -20,45 +21,52 @@ const IncludeMovements: React.FC = () => {
       <ContentHeader title="Adicionar" linecolor="#4e41f0">
         <div />
       </ContentHeader>
-        <ContainerForm>
-          <ContentForm>
-            <form action="#" method="post">
-              <ContentDescription>
-                <label htmlFor="description">Descrição:</label>
-                <input type="text" id="description" name="description" />
-              </ContentDescription>
+      <ContainerForm>
+        <ContentForm>
+          <form action="#" method="post">
+          <ContentTypePayment>
+              <label htmlFor="typePayment">Forma de Pgamento:</label>
+              <select id="typePayment" name="typePayment">
+                <option value="credito">Crédito</option>
+                <option value="dibito">Débito</option>
+              </select>
+            </ContentTypePayment>
+            <ContentDescription>
+              <label htmlFor="description">Descrição:</label>
+              <input type="text" id="description" name="description" />
+            </ContentDescription>
 
-              <ContentAmount>
-                <label htmlFor="value">Valor:</label>
-                <input type="number" id="value" name="value" />
-                <ContentType>
-                  <label htmlFor="type">Tipo:</label>
-                  <select id="type" name="type">
-                    <option value="entrada">Entrada</option>
-                    <option value="saida">Saída</option>
-                  </select>
-                </ContentType>
-              </ContentAmount>
-
-              <ContentFrequency>
-                <label htmlFor="frequency">Frequência:</label>
-                <select id="frequency" name="frequency">
-                  <option value="recorrente">Recorrente</option>
-                  <option value="eventual">Eventual</option>
+            <ContentAmount>
+              <label htmlFor="value">Valor:</label>
+              <input type="number" id="value" name="value" />
+              <ContentType>
+                <label htmlFor="type">Tipo:</label>
+                <select id="type" name="type">
+                  <option value="entrada">Entrada</option>
+                  <option value="saida">Saída</option>
                 </select>
-                <ContentDate>
-                  <label htmlFor="date">Data:</label>
-                  <input type="date" id="date" name="date" />
-                </ContentDate>
-              </ContentFrequency>
+              </ContentType>
+            </ContentAmount>
 
-              <ContentButton>
-                <button type="submit">Adicionar Movimento</button>
-              </ContentButton>
+            <ContentFrequency>
+              <label htmlFor="frequency">Frequência:</label>
+              <select id="frequency" name="frequency">
+                <option value="recorrente">Recorrente</option>
+                <option value="eventual">Eventual</option>
+              </select>
+              <ContentDate>
+                <label htmlFor="date">Data:</label>
+                <input type="date" id="date" name="date" />
+              </ContentDate>
+            </ContentFrequency>
 
-            </form>
-          </ContentForm>
-        </ContainerForm>
+            <ContentButton>
+              <button type="submit">Adicionar Movimento</button>
+            </ContentButton>
+
+          </form>
+        </ContentForm>
+      </ContainerForm>
     </Container>
   )
 }
