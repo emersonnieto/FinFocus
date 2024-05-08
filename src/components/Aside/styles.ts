@@ -65,3 +65,23 @@ export const Dropdown = styled.div`
 export const DropdownContent = styled.div`
 
 `;
+
+export const MenuItemButton = styled.button`
+    font-size: 16px;
+    color: ${props => props.theme.colors.white};
+    border: none;
+    background: none;
+    margin: 7px 0;
+    display: flex;
+    align-items: center;
+        
+
+    &:hover{
+        color: #2FA6FA;
+    }
+
+    >svg{
+        font-size: 18px;
+        margin-right: 5px;
+    }
+`;

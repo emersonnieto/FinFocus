@@ -1,74 +1,77 @@
 import React from "react";
 
+import Input from "../../components/Input";
+import Button from "../../components/Button";
+
 import {
   Container,
-  ContentForm,
-  ContentDescription,
-  ContentAmount,
-  ContentType,
-  ContentFrequency,
-  ContentDate,
-  ContentButton,
-  ContainerForm,
-  ContentTypePayment
+  Form,
+  FormTitle,
+  ContentType
+
 } from "./styles";
 
-import ContentHeader from "../../components/ContentHeader";
-
 const IncludeMovements: React.FC = () => {
+
   return (
     <Container>
-      <ContentHeader title="Adicionar" linecolor="#4e41f0">
-        <div />
-      </ContentHeader>
-      <ContainerForm>
-        <ContentForm>
-          <form action="#" method="post">
-          <ContentTypePayment>
-              <label htmlFor="typePayment">Forma de Pgamento:</label>
-              <select id="typePayment" name="typePayment">
-                <option value="credito">Crédito</option>
-                <option value="dibito">Débito</option>
-              </select>
-            </ContentTypePayment>
-            <ContentDescription>
-              <label htmlFor="description">Descrição:</label>
-              <input type="text" id="description" name="description" />
-            </ContentDescription>
 
-            <ContentAmount>
-              <label htmlFor="value">Valor:</label>
-              <input type="number" id="value" name="value" />
-              <ContentType>
-                <label htmlFor="type">Tipo:</label>
-                <select id="type" name="type">
-                  <option value="entrada">Entrada</option>
-                  <option value="saida">Saída</option>
-                </select>
-              </ContentType>
-            </ContentAmount>
+      <Form onSubmit={() => { }}>
+        <FormTitle>Adicionar Movimento</FormTitle>
 
-            <ContentFrequency>
-              <label htmlFor="frequency">Frequência:</label>
-              <select id="frequency" name="frequency">
-                <option value="recorrente">Recorrente</option>
-                <option value="eventual">Eventual</option>
-              </select>
-              <ContentDate>
-                <label htmlFor="date">Data:</label>
-                <input type="date" id="date" name="date" />
-              </ContentDate>
-            </ContentFrequency>
+        <label htmlFor="description">Descrição:</label>
+        <Input
+          type="input"
+          placeholder="Descrição"
+          required
+        />
 
-            <ContentButton>
-              <button type="submit">Adicionar Movimento</button>
-            </ContentButton>
+        <ContentType>
+          <label htmlFor="typePayment">Forma de Pgamento:</label>
+          <select id="typePayment" name="typePayment">
+            <option value="credito">Crédito</option>
+            <option value="debito">Débito</option>
+          </select>
+        </ContentType>
 
-          </form>
-        </ContentForm>
-      </ContainerForm>
+        <label htmlFor="value">Valor:</label>
+        <Input
+          type="input"
+          placeholder="R$"
+          required
+        />
+
+        <ContentType>
+          <label htmlFor="type">Tipo:</label>
+          <select id="type" name="type">
+            <option value="entrada">Entrada</option>
+            <option value="saida">Saída</option>
+          </select>
+        </ContentType>
+
+        <label htmlFor="date">Data:</label>
+        <Input
+          type="date"
+          placeholder=""
+          required
+        />
+
+        <ContentType>
+          <label htmlFor="frequency">Frequência:</label>
+          <select id="frequency" name="frequency">
+            <option value="recorrente">Recorrente</option>
+            <option value="eventual">Eventual</option>
+          </select>
+        </ContentType>
+
+
+        <Button type="submit">Adicionar</Button>
+
+      </Form>
+
+
     </Container>
-  )
+  );
 }
 
 export default IncludeMovements;

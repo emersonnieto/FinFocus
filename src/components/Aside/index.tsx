@@ -2,6 +2,8 @@ import React from "react";
 import logoimg from '../../assets/logo.svg'
 import { Link } from "react-router-dom";
 
+import { useAuth } from "../../hooks/auth";
+
 import {
     MdDashboard,
     MdArrowDownward,
@@ -16,11 +18,12 @@ import {
     LogImg,
     Title,
     MenuContainer,
+    MenuItemButton
 
 } from "./styles";
 
 const Aside: React.FC = () => {
-
+    const { signOut } = useAuth();
     return (
         <Container>
             <Header>
@@ -29,11 +32,11 @@ const Aside: React.FC = () => {
             </Header>
 
             <MenuContainer>
-                <Link to="/dashboard">
+                <Link to="/">
                     <MdDashboard />
                     DashBoard
                 </Link>
-                
+
                 <Link to="/include">
                     <MdAdd />
                     Adicionar
@@ -50,10 +53,10 @@ const Aside: React.FC = () => {
                     Saídas
                 </Link>
 
-                <Link to="#" >
+                <MenuItemButton onClick={signOut} >
                     <MdExitToApp />
                     Sair
-                </Link>
+                </MenuItemButton>
 
             </MenuContainer>
         </Container>

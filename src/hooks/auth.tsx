@@ -16,7 +16,7 @@ const AuthProvider: React.FC<{children: ReactNode}> = ({children}) => {
     });
 
     const signIn = (email: string, password: string) => {
-        if(email === 'emerson@gamil.com' && password === '19930926'){
+        if(email === 'emerson@gmail.com' && password === '19930926'){
             localStorage.setItem('@finfocus:logged', 'true');
             setLogged(true);
         }else {

@@ -1,156 +1,76 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-`;
-
-export const ContainerForm = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 100px;
-`;
-
-
-export const ContentForm = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  max-width: 600px;
-  min-width: 600px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
-  color: #666666;
-        
-`;
-export const ContentDescription = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-
-  label {
-    margin-right: 10px;
-  }
-
-  input,
-  select {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #666666;
-  }
-
-`;
-
-export const ContentTypePayment = styled.div`
+    height: 100vh;
     display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-  label {
-    margin-right: 10px;
-  }
+    background-color: ${props => props.theme.colors.primary};
+`;
 
-  input,
-  select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #666666;
-  }
+export const Logo = styled.div`
+    display: flex;
+    align-items: center;
 
+    margin-bottom: 30px;
+
+    >h2 {
+        color: ${props => props.theme.colors.white};
+        margin-left: 7px;
+    }
+
+    >img {
+        width: 40px;
+        height: 40px;
+    }
+`;
+
+export const Form = styled.form`
+    width: 640px;
+    height: 640px;
+    padding: 30px;
+    border-radius: 10px;
+
+    background-color: ${props => props.theme.colors.tertiary};
+`;
+
+export const FormTitle = styled.h1`
+font-size: 20px;
+margin-bottom: 40px;
+
+color: ${props => props.theme.colors.white};
+
+    &::after {
+        content: "";
+        display: block;
+        width: 55px;
+        border-bottom: 10px solid ${props => props.theme.colors.warning};
+    }
 `;
 
 
-export const ContentAmount = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-
-  label {
-    margin-right: 10px;
-    color: #666666;
-    
-  }
-
-  input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #666666;
-  }
-`;
 export const ContentType = styled.div`
   display: flex;
-  align-items: center;
-  margin-left: 50px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  flex-direction: column;
 
   label {
-    margin-left: 10px;
-    color: #666666;
+    margin-right: 15px;
   }
 
+  input,
   select {
-    padding: 8px;
-    border: 1px solid #ccc;
+    margin: 7px 0;
+    padding: 10px;
+
     border-radius: 5px;
-    color: #666666;
   }
+
 `;
-export const ContentFrequency = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
 
-  label {
-    margin-right: 10px;
-    color: #666666;
-  }
 
-  select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #666666;
-  }
-`;
-export const ContentDate = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 83px;
 
-  label {
-    margin-left: 10px;
-    color: #666666;
-  }
-
-  input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #666666;
-  }
-`;
-export const ContentButton = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-
-  button {
-    background-color: #4e41f0;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #3c31b9;
-    }
-  }
-`;
