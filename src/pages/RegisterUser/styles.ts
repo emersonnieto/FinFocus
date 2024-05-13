@@ -22,43 +22,15 @@ export const Logo = styled.div`
         color: ${props => props.theme.colors.white};
         margin-left: 7px;
     }
-
-    >img {
-        width: 40px;
-        height: 40px;
-    }
 `;
 
 export const Form = styled.form`
     width: 310px;
-    height: 310px;
+    height: 410px;
     padding: 30px;
     border-radius: 10px;
 
     background-color: ${props => props.theme.colors.tertiary};
-
-    >label {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 12px;
-        color: ${props => props.theme.colors.white};
-        margin-top: 10px;
-        margin-bottom: 10px;
-
-        a{
-        color: ${props => props.theme.colors.white};
-        text-decoration: none;
-        margin-left: 10px;
-        display: flex;
-        align-items: center;
-        
-
-        &:hover{
-            color: #2FA6FA;
-        }
-    }
-    }
 
  
 `;
